@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FECheckForUpdate", "FECheckForUpdate\FECheckForUpdate.csproj", "{8D64E798-5D67-46D0-8867-F974C8DFD69C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D64E798-5D67-46D0-8867-F974C8DFD69C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D64E798-5D67-46D0-8867-F974C8DFD69C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D64E798-5D67-46D0-8867-F974C8DFD69C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D64E798-5D67-46D0-8867-F974C8DFD69C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1E2D1492-5427-4930-9AF2-2716EDB81B96}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <PackageId>FreeEcho Check For Update</PackageId>
+    <Product>FreeEcho Check For Update</Product>
+    <Authors>FreeEcho</Authors>
+    <Company>FreeEcho</Company>
+    <Version>1.3.0</Version>
+    <Copyright>© 2021 FreeEcho</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>Z:\AppDevelopment\Library\.Net\更新確認\FECheckForUpdate\FECheckForUpdate\FECheckForUpdate.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>Z:\AppDevelopment\Library\.Net\更新確認\FECheckForUpdate\FECheckForUpdate\FECheckForUpdate.xml</DocumentationFile>
+  </PropertyGroup>
+
+</Project>
