@@ -36,6 +36,13 @@
             <param name="checkBeta">ベータバージョンも確認するかの値 (確認しない「false」/確認する「true」)</param>
             <returns>更新確認の結果</returns>
         </member>
+        <member name="M:FreeEcho.FECheckForUpdate.CheckForUpdate.GetWebPageString(System.String)">
+            <summary>
+            ウェブページの文字列を取得
+            </summary>
+            <param name="url">URL</param>
+            <returns>Task</returns>
+        </member>
         <member name="M:FreeEcho.FECheckForUpdate.CheckForUpdate.StringFromNumber(System.String)">
             <summary>
             バージョン番号の文字列を数値に変換して取得
