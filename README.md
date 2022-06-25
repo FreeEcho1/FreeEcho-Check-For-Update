@@ -5,4 +5,3 @@
 「FECheckForUpdateSample」は使用方法のサンプルプログラムです。<br>
 <br>
 「Visual Studio 2022」を使用。
-test
