@@ -2,6 +2,9 @@
 // 「FreeEcho Check For Update」 history
 //////////////////////////////////////////
 
+Version 1.5.0 - 2022/7/2
+ - 修正。
+
 VErsion 1.4.0 - 2022/6/26
  - 使用するクラスを「WebClient」から「HttpClient」に変更。
  - 修正。
