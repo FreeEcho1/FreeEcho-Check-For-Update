@@ -73,7 +73,7 @@ public class CheckForUpdate
     public static CheckForUpdateResult CheckForUpdateFileURL(
         string filePath,
         string url,
-        out VersionInformation urlVersionInformation,
+        out VersionInformation? urlVersionInformation,
         bool checkBeta = false
         )
     {
@@ -84,18 +84,24 @@ public class CheckForUpdate
         try
         {
             // URLから文字列取得
-            System.Threading.Tasks.Task<string> task = GetWebPageString(url);      // ウェブページの文字列
-            task.Wait();
+            System.Threading.Tasks.Task<string> task = GetWebPageString(url);      // ウェブページの文字列取得のタスク
             System.IO.StringReader sr = new(task.Result);     // 取得した文字列
             int count = 0;      // カウント用
-            string[] versionString = new string[2] { null, null };        // バージョン番号の文字列 (「0」は標準バージョン、「1」はベータバージョン)
+            string[] versionString = new string[2] { "", "" };        // バージョン番号の文字列 (「0」は標準バージョン、「1」はベータバージョン)
             while (-1 < sr.Peek())
             {
-                versionString[count++] = sr.ReadLine();
+                versionString[count++] = sr.ReadLine() ?? "";
+                if (versionString.Length <= count)
+                {
+                    break;
+                }
             }
-            VersionInformation[] versionInformation = new VersionInformation[2] { null, null };       // バージョン情報 (「0」は標準バージョン、「1」はベータバージョン)
-            versionInformation[0] = StringFromNumber(versionString[0]);
-            if (checkBeta && (versionString[1] != null))
+            VersionInformation[] versionInformation = new VersionInformation[2];       // バージョン情報 (「0」は標準バージョン、「1」はベータバージョン)
+            if (string.IsNullOrEmpty(versionString[0]) == false)
+            {
+                versionInformation[0] = StringFromNumber(versionString[0]);
+            }
+            if (checkBeta && (string.IsNullOrEmpty(versionString[1]) == false))
             {
                 versionInformation[1] = StringFromNumber(versionString[1]);
             }
@@ -104,7 +110,10 @@ public class CheckForUpdate
             System.Diagnostics.FileVersionInfo fileVersionInformation = System.Diagnostics.FileVersionInfo.GetVersionInfo(filePath);     // ファイルバージョン情報
 
             // 更新確認
-            result = VersionCompare(new(fileVersionInformation.FileMajorPart, fileVersionInformation.FileMinorPart, fileVersionInformation.FileBuildPart, fileVersionInformation.FilePrivatePart), versionInformation[0]);
+            if (versionInformation[0] != null)
+            {
+                result = VersionCompare(new(fileVersionInformation.FileMajorPart, fileVersionInformation.FileMinorPart, fileVersionInformation.FileBuildPart, fileVersionInformation.FilePrivatePart), versionInformation[0]);
+            }
             // ベータバージョンの更新確認
             bool beta = false;      // 最新のベータバージョンがあるかの値
             if (versionInformation[1] != null)
@@ -148,7 +157,7 @@ public class CheckForUpdate
         )
     {
         System.Net.Http.HttpClient client = new();
-        return (await client.GetStringAsync(url));
+        return (await client.GetStringAsync(url).ConfigureAwait(false));
     }
 
     /// <summary>
